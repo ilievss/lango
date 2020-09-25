@@ -73,10 +73,10 @@ func TestConsonantsPrefixWordRuleSentence(t *testing.T) {
 
 func TestConsonantsPrefixWordRuleApostrophe(t *testing.T) {
 	str := "don't"
-	_, err := ConsonantsPrefixWordRule.Apply(str)
+	actual, err := ConsonantsPrefixWordRule.Apply(str)
 	if _, ok := err.(RuleNotApplicableError); !ok {
 		t.Error(fmt.Sprintf("Failed to correctly apply the consonant prefix rule for '%s'."+
-			" Expected RuleNotApplicableError | Got: nil", str))
+			" Expected RuleNotApplicableError | Got: '%s'", str, actual))
 	}
 }
 

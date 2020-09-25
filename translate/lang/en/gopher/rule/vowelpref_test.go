@@ -43,7 +43,7 @@ func TestVowelPrefixWordRuleApplySentence(t *testing.T) {
 }
 
 func TestVowelPrefixWordRuleApostrophe(t *testing.T) {
-	str := "don't"
+	str := "ain't"
 	actual, err := VowelPrefixWordRule.Apply(str)
 	if _, ok := err.(RuleNotApplicableError); !ok {
 		t.Error(fmt.Sprintf("Failed to correctly apply the vowel prefix rule for '%s'."+

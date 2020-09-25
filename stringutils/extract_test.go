@@ -7,7 +7,7 @@ import (
 
 func TestGetConsonantsSkipZero(t *testing.T) {
 	actual := getConsonants("")
-	expected := "qwrtpsfghjklzxcvbnm"
+	expected := consonants
 	if actual != expected {
 		t.Error(fmt.Sprintf("Failed to get correct consonants with no skipping."+
 			" Expected: '%s' | Got: '%s'", expected, actual))
@@ -16,34 +16,34 @@ func TestGetConsonantsSkipZero(t *testing.T) {
 
 func TestGetConsonantsSkipOne(t *testing.T) {
 	actual := getConsonants("x")
-	expected := "qwrtpsfghjklzcvbnm"
+	expected := "bcdfghjklmnpqrstvwzBCDFGHJKLMNPQRSTVWZ"
 	if actual != expected {
 		t.Error(fmt.Sprintf("Failed to get correct consonants when skipping 'x'."+
 			" Expected: '%s' | Got: '%s'", expected, actual))
 	}
 }
 
-func TestGetConsonantsSkipConsecutiveBeginning(t *testing.T) {
-	actual := getConsonants("qwr")
-	expected := "tpsfghjklzxcvbnm"
-	if actual != expected {
-		t.Error(fmt.Sprintf("Failed to get correct consonants when skipping consecutive consonants'qwr'."+
-			" Expected: '%s' | Got: '%s'", expected, actual))
-	}
-}
-
-func TestGetConsonantsSkipRandom(t *testing.T) {
+func TestGetConsonantsSkipLowerCase(t *testing.T) {
 	actual := getConsonants("wtkz")
-	expected := "qrpsfghjlxcvbnm"
+	expected := "bcdfghjlmnpqrsvxBCDFGHJLMNPQRSVX"
 	if actual != expected {
 		t.Error(fmt.Sprintf("Failed to get correct consonants when skipping random consonants 'wtkz'."+
 			" Expected: '%s' | Got: '%s'", expected, actual))
 	}
 }
 
-func TestGetConsonantsSkipConsecutiveEnding(t *testing.T) {
-	actual := getConsonants("bnm")
-	expected := "qwrtpsfghjklzxcv"
+func TestGetConsonantsSkipUpperCase(t *testing.T) {
+	actual := getConsonants("QSX")
+	expected := "bcdfghjklmnprtvwzBCDFGHJKLMNPRTVWZ"
+	if actual != expected {
+		t.Error(fmt.Sprintf("Failed to get correct consonants when skipping consonants 'bnm'."+
+			" Expected: '%s' | Got: '%s'", expected, actual))
+	}
+}
+
+func TestGetConsonantsSkipMixedCase(t *testing.T) {
+	actual := getConsonants("dghStWX")
+	expected := "bcfjklmnpqrvzBCFJKLMNPQRVZ"
 	if actual != expected {
 		t.Error(fmt.Sprintf("Failed to get correct consonants when skipping consonants 'bnm'."+
 			" Expected: '%s' | Got: '%s'", expected, actual))
@@ -52,25 +52,61 @@ func TestGetConsonantsSkipConsecutiveEnding(t *testing.T) {
 
 func TestGetConsonantsSkipVowels(t *testing.T) {
 	actual := getConsonants("auiy")
-	expected := "qwrtpsfghjklzxcvbnm"
+	expected := "bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ"
 	if actual != expected {
 		t.Error(fmt.Sprintf("Failed to get correct consonants when skipping vowels 'auiy'."+
 			" Expected: '%s' | Got: '%s'", expected, actual))
 	}
 }
 
-func TestGetConsonantsSkipMixedConsonantsAndVowels(t *testing.T) {
+func TestGetConsonantsSkipMixedConsonantsAndVowelsLowerCase(t *testing.T) {
 	actual := getConsonants("watykuiz")
-	expected := "qrpsfghjlxcvbnm"
+	expected := "bcdfghjlmnpqrsvxBCDFGHJLMNPQRSVX"
 	if actual != expected {
 		t.Error(fmt.Sprintf("Failed to get correct consonants when skipping random consonants and vowels 'watykuiz'."+
 			" Expected: '%s' | Got: '%s'", expected, actual))
 	}
 }
 
-func TestGetConsonantsSkipRepeatingConsonants(t *testing.T) {
+func TestGetConsonantsSkipMixedConsonantsAndVowelsUpperCase(t *testing.T) {
+	actual := getConsonants("WATYKUIZ")
+	expected := "bcdfghjlmnpqrsvxBCDFGHJLMNPQRSVX"
+	if actual != expected {
+		t.Error(fmt.Sprintf("Failed to get correct consonants when skipping random consonants and vowels 'watykuiz'."+
+			" Expected: '%s' | Got: '%s'", expected, actual))
+	}
+}
+
+func TestGetConsonantsSkipMixedConsonantsAndVowelsMixedCase(t *testing.T) {
+	actual := getConsonants("WaTykUiZ")
+	expected := "bcdfghjlmnpqrsvxBCDFGHJLMNPQRSVX"
+	if actual != expected {
+		t.Error(fmt.Sprintf("Failed to get correct consonants when skipping random consonants and vowels 'watykuiz'."+
+			" Expected: '%s' | Got: '%s'", expected, actual))
+	}
+}
+
+func TestGetConsonantsSkipRepeatingConsonantsLowerCase(t *testing.T) {
 	actual := getConsonants("wwzzmmjj")
-	expected := "qrtpsfghklxcvbn"
+	expected := "bcdfghklnpqrstvxBCDFGHKLNPQRSTVX"
+	if actual != expected {
+		t.Error(fmt.Sprintf("Failed to get correct consonants when skipping random repeating consonants 'wwzzmmjj'."+
+			" Expected: '%s' | Got: '%s'", expected, actual))
+	}
+}
+
+func TestGetConsonantsSkipRepeatingConsonantsUpperCase(t *testing.T) {
+	actual := getConsonants("WWZZMMJJ")
+	expected := "bcdfghklnpqrstvxBCDFGHKLNPQRSTVX"
+	if actual != expected {
+		t.Error(fmt.Sprintf("Failed to get correct consonants when skipping random repeating consonants 'wwzzmmjj'."+
+			" Expected: '%s' | Got: '%s'", expected, actual))
+	}
+}
+
+func TestGetConsonantsSkipRepeatingConsonantsMixedCase(t *testing.T) {
+	actual := getConsonants("wWzZmmJJ")
+	expected := "bcdfghklnpqrstvxBCDFGHKLNPQRSTVX"
 	if actual != expected {
 		t.Error(fmt.Sprintf("Failed to get correct consonants when skipping random repeating consonants 'wwzzmmjj'."+
 			" Expected: '%s' | Got: '%s'", expected, actual))

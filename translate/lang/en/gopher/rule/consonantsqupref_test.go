@@ -65,7 +65,8 @@ func TestConsonantsQuPrefixWordRuleSentence(t *testing.T) {
 }
 
 func TestConsonantsQuPrefixWordRuleApostrophe(t *testing.T) {
-	str := "don't"
+	// I know a word like that doesn't exist, but just for the test :)
+	str := "splon't"
 	actual, err := ConsonantsQuPrefixWordRule.Apply(str)
 	if _, ok := err.(RuleNotApplicableError); !ok {
 		t.Error(fmt.Sprintf("Failed to correctly apply the consonants + qu prefix rule for '%s'."+

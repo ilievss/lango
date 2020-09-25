@@ -56,7 +56,8 @@ func TestXrPrefixWordRuleApplySentence(t *testing.T) {
 }
 
 func TestXrPrefixWordRuleApostrophe(t *testing.T) {
-	str := "don't"
+	// I know a word like that doesn't exist, but just for the test :)
+	str := "xron't"
 	actual, err := XrPrefixWordRule.Apply(str)
 	if _, ok := err.(RuleNotApplicableError); !ok {
 		t.Error(fmt.Sprintf("Failed to correctly apply the 'xr' prefix rule for '%s'."+

@@ -2,13 +2,14 @@ package stringutils
 
 import "strings"
 
-const consonants = "qwrtpsfghjklzxcvbnm"
+const consonants = "bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ"
 
 func getConsonants(skip string) string {
 	newConsonants := ""
+	skipBothCases := strings.ToLower(skip) + strings.ToUpper(skip)
 	for i := 0; i < len(consonants); i++ {
 		char := consonants[i : i+1]
-		if strings.IndexAny(skip, char) == -1 {
+		if strings.IndexAny(skipBothCases, char) == -1 {
 			newConsonants += char
 		}
 	}

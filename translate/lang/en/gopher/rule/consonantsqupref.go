@@ -11,9 +11,11 @@ var ConsonantsQuPrefixWordRule = &consonantsQuPrefixWordRuleInner{}
 
 func (r *consonantsQuPrefixWordRuleInner) Apply(word string) (string, error) {
 	if !stringutils.IsWord(word) {
-		return empty, RuleNotApplicableError{"rule does not apply to this word: " + word}
+		return empty, RuleNotApplicableError{"Supplied string is not a word: " + word}
 	}
-
+	if strings.Contains(word, apostrophe) {
+		return empty, RuleNotApplicableError{"Word has apostrophes: " + word}
+	}
 	cluster := stringutils.GetConsonantClusterPrefix(word, "q")
 	if cluster == empty {
 		return empty, RuleNotApplicableError{"Word does not start with a consonant"}

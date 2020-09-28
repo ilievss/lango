@@ -26,7 +26,7 @@ func JsonHandler(w http.ResponseWriter,
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		w.WriteHeader(500)
-		w.Write([]byte("Could not request body"))
+		w.Write([]byte("Could not read request body"))
 		return
 	}
 	err = json.Unmarshal(body, expectedBody)

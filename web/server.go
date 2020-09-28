@@ -17,6 +17,7 @@ func New(address string) LangoServer {
 
 	// Route handles & endpoints
 	r.HandleFunc("/word", gopher.TranslateEnglishWordHandler).Methods("POST")
+	r.HandleFunc("/sentence", gopher.TranslateEnglishSentenceHandler).Methods("POST")
 
 	return LangoServer{server: http.Server{Addr: address, Handler: r}}
 }

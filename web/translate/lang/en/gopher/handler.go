@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-var gopherTranslator = gopher.New()
+var gopherTranslator = gopher.NewBasicGopherTranslator()
 
 type TranslateWordRequest struct {
 	EnglishWord string `json:"english-word"`

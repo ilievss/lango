@@ -20,6 +20,6 @@ func (r *consonantsPrefixWordRuleInner) Apply(word string) (string, error) {
 	if cluster == stringutils.Empty {
 		return stringutils.Empty, RuleNotApplicableError{"Word does not start with a consonant: " + word}
 	}
-	translated := strings.ReplaceAll(word, cluster, "") + cluster + "ogo"
+	translated := strings.Replace(word, cluster, "", 1) + cluster + "ogo"
 	return translated, nil
 }

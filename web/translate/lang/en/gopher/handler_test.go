@@ -81,7 +81,7 @@ func TestTranslateEnglishWordValidWord(t *testing.T) {
 	}
 
 	if responseBody.GopherWord != expected {
-		t.Fatal(fmt.Sprintf("Expected : '%s', but got %s", expected, responseBody.GopherWord))
+		t.Fatal(fmt.Sprintf("Expected : '%s', but got '%s'", expected, responseBody.GopherWord))
 	}
 }
 

@@ -4,6 +4,7 @@ import (
 	"errors"
 	"github.com/ilievss/lango/translate/lang/en/gopher"
 	"github.com/ilievss/lango/web/helper"
+	"github.com/ilievss/lango/web/translate"
 	"net/http"
 )
 
@@ -25,6 +26,7 @@ func TranslateEnglishWordHandler(w http.ResponseWriter, r *http.Request) {
 			}
 			return nil, 500, err
 		}
+		translationHistory.Add(translate.HistoryEntry{Input: request.EnglishWord, Translation: translation})
 		return TranslateWordResponse{translation}, 200, nil
 	})
 }

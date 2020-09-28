@@ -32,11 +32,18 @@ $GOPATH/bin/lango
 To translate a word just send a POST request:
 
 ```bash
-curl http://localhost:8080 -X POST -d '{"english-word": "Spain"}'
+curl http://localhost:8080/word -X POST -d '{"english-word": "Spain"}'
 ```
 
 To translate a sentence:
 
 ```bash
-curl http://localhost:8080 -X POST -d '{"english-sentence": "Spain is not my home country."}'
+curl http://localhost:8080/sentence -X POST -d '{"english-sentence": "Spain is not my home country."}'
+```
+
+
+To see the translation history since the start of the app:
+
+```bash
+curl http://localhost:8080/history
 ```

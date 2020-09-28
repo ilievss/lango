@@ -5,19 +5,19 @@ import (
 	"strings"
 )
 
-type BasicEnTranslator struct {
+type BasicGopherTranslator struct {
 	WordTranslator     WordTranslator
 	SentenceTranslator SentenceTranslator
 }
 
 func NewBasicGopherTranslator() EnTranslator {
-	return &BasicEnTranslator{
+	return &BasicGopherTranslator{
 		NewRuleBasedWordTranslator(),
 		NewSimpleSentenceTranslator(),
 	}
 }
 
-func (t *BasicEnTranslator) Translate(text string) (string, error) {
+func (t *BasicGopherTranslator) Translate(text string) (string, error) {
 	if strings.Contains(text, stringutils.Space) {
 		return t.SentenceTranslator.TranslateSentence(text)
 	}

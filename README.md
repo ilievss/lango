@@ -20,3 +20,17 @@ go test -cover ./...
 ```bash
 go install
 ```
+
+### Run
+
+```bash
+$GOPATH/bin/lango
+```
+
+### Usage
+
+To translate a word just send a POST request:
+
+```bash
+curl -X POST -d '{"english-word": "Spain"}'
+```
